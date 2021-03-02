@@ -14,7 +14,7 @@
                 {{#each products}}
                 <tr id="product-{{this.product._id}}">
 
-                    <td><img style="width: 70px; height: 70px;" src="/product-images/{{this.product._id}}.jpg" alt="">
+                    <td><img style="width: 70px; height: 70px;" src="/images/product-images/{{this.product._id}}.jpg" alt="">
                     </td>
                     <td>{{this.product.name}}</td>
                     <td>{{this.product.Price}}</td>
@@ -92,7 +92,8 @@
 
 
     function removeItem(cartId, productId) {
-        console.log('remove item function called on front')
+        var delprd = confirm ('Do you need to remove')
+         if (delprd) {
         $.ajax({
             url: '/remove-item',
             data: {
@@ -101,15 +102,10 @@
             },
             method: 'post',
             success: (response) => {
-                if (response.status) {
-                    let value = confirm('Do you need to remove')
-                    if (value == 'true') {
-                        document.getElementById(`product-${productId}`).remove();
-                    }
-
-                }
-
+                location.reload()
             }
         })
     }
+    }
+
 </script>
