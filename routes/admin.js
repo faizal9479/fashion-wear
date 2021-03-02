@@ -90,10 +90,10 @@ router.post("/add-product", (req, res) => {
     let image3 = req.files.image3;
     let image4 = req.files.image4;
 
-    image1.mv("./public/product-images/" + id + ".jpg").then(() => {
-      image2.mv("./public/product-images/" + id + "-1.jpg").then(() => {
-        image3.mv("./public/product-images/" + id + "-2.jpg").then(() => {
-          image4.mv("./public/product-images/" + id + "-3.jpg").then(() => {
+    image1.mv("./public/images/product-images/" + id + ".jpg").then(() => {
+      image2.mv("./public/images/product-images/" + id + "-1.jpg").then(() => {
+        image3.mv("./public/images/product-images/" + id + "-2.jpg").then(() => {
+          image4.mv("./public/images/product-images/" + id + "-3.jpg").then(() => {
             res.redirect("/admin");
           });
         });
