@@ -6,6 +6,7 @@ var userHelpers = require("../helpers/user-helpers");
 const db = require("../config/connection");
 var collection = require("../config/collections");
 var objectId = require("mongodb").ObjectID;
+const adminHelpers = require("../helpers/admin-helpers");
 
 const verifyLogin = (req, res, next) => {
   if (req.session.userLoggedIn) {
@@ -22,10 +23,17 @@ router.get("/", async function (req, res, next) {
   if (user) {
     cartCount = await userHelpers.getCartCount(req.session.user._id);
   }
-  productHelpers.getAllProducts().then((products) => {
-    console.log(cartCount);
-    res.render("user/view-products", { products, user, cartCount });
-    console.log(user);
+  adminHelpers.getAllSlideImages().then((slideImages) => {
+    productHelpers.getAllProducts().then((products) => {
+      console.log(cartCount);
+      res.render("user/view-products", {
+        products,
+        user,
+        cartCount,
+        slideImages,
+      });
+      console.log(user);
+    });
   });
 });
 

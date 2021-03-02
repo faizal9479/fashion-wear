@@ -24,6 +24,59 @@ router.get("/", function (req, res, next) {
   }
 });
 
+router.get("/add-slideshow", verifyAdmin, (req, res) => {
+  res.render("admin/add-slide", { admin: true });
+});
+
+router.get("/edit-slideshow", async (req, res) => {
+  let slide_image = await adminHelpers.getSlideDetails(req.params.id);
+  res.render("admin/edit-slide", { admin: true, slide_image });
+});
+
+router.post("/add-slideshow", (req, res) => {
+  adminHelpers.addSlideImage().then((id) => {
+    let slide_image1 = req.files.slide_image1;
+    let slide_image2 = req.files.slide_image2;
+    let slide_image3 = req.files.slide_image3;
+
+    slide_image1.mv("./public/slide-images/" + id + ".jpg").then(() => {
+      slide_image2.mv("./public/slide-images/" + id + "-1.jpg").then(() => {
+        slide_image3.mv("./public/slide-images/" + id + "-2.jpg").then(() => {
+          res.redirect("/admin");
+        });
+      });
+    });
+  });
+});
+
+router.post("/edit-slideshow/:id", (req, res) => {
+  let slide_image1 = req.files.slide_image1;
+  let slide_image2 = req.files.slide_image2;
+  let slide_image3 = req.files.slide_image3;
+
+  if (slide_image1 && slide_image2 && slide_image3) {
+    slide_image1.mv("./public/slide-images/" + req.params.id + ".jpg");
+    slide_image2.mv("./public/slide-images/" + req.params.id + "-1.jpg");
+    slide_image3.mv("./public/slide-images/" + req.params.id + "-2.jpg");
+  } else if (slide_image1 && slide_image2) {
+    slide_image1.mv("./public/slide-images/" + req.params.id + ".jpg");
+    slide_image2.mv("./public/slide-images/" + req.params.id + "-1.jpg");
+  } else if (slide_image1 && slide_image3) {
+    slide_image1.mv("./public/slide-images/" + req.params.id + ".jpg");
+    slide_image3.mv("./public/slide-images/" + req.params.id + "-2.jpg");
+  } else if (slide_image2 && slide_image3) {
+    slide_image2.mv("./public/slide-images/" + req.params.id + "-1.jpg");
+    slide_image3.mv("./public/slide-images/" + req.params.id + "-2.jpg");
+  } else if (slide_image1) {
+    slide_image1.mv("./public/slide-images/" + req.params.id + ".jpg");
+  } else if (slide_image2) {
+    slide_image2.mv("./public/slide-images/" + req.params.id + "-1.jpg");
+  } else if (slide_image3) {
+    slide_image3.mv("./public/slide-images/" + req.params.id + "-2.jpg");
+  }
+  res.redirect("/admin");
+});
+
 router.get("/add-product", verifyAdmin, (req, res) => {
   res.render("admin/add-product", {
     admin: true,

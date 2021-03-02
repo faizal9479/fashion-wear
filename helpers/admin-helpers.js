@@ -72,4 +72,39 @@ module.exports = {
         });
     });
   },
+
+  addSlideImage: () => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collection.SLIDE_IMAGE)
+        .insertOne({ name: "SlideImage" })
+        .then((data) => {
+          resolve(data.ops[0]._id);
+          console.log(data.ops[0]);
+        });
+    });
+  },
+
+  getAllSlideImages: () => {
+    return new Promise(async (resolve, reject) => {
+      let slideImages = await db
+        .get()
+        .collection(collection.SLIDE_IMAGE)
+        .find()
+        .toArray();
+
+      resolve(slideImages);
+    });
+  },
+
+  getSlideDetails: (slide_id) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collection.SLIDE_IMAGE)
+        .findOne()
+        .then((response) => {
+          resolve(response);
+        });
+    });
+  },
 };
