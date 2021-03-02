@@ -22,10 +22,6 @@ router.get('/', function (req, res, next) {
   }else{
     res.redirect('/admin/login')
   }
-
-  
-
- 
 });
 
 router.get('/add-product', verifyAdmin, (req, res) => {
@@ -51,19 +47,9 @@ router.post('/add-product', (req, res) => {
           })
         })
       })
-    })
-      
-    
+    })   
 })
 })
-  
-  
-
-  
-  
-
-
-
 
 router.get('/delete-product/:id',(req, res)=>{
   let productID = req.params.id;
