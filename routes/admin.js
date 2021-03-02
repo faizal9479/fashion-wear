@@ -61,6 +61,31 @@ router.get("/edit-product/:id", async (req, res) => {
   res.render("admin/edit-product", { product, admin: true });
 });
 
+router.get("/add-product", verifyAdmin, (req, res) => {
+  res.render("admin/add-product", {
+    admin: true,
+  });
+});
+
+router.post("/add-product", (req, res) => {
+  productHelpers.addProduct(req.body).then((id) => {
+    let image1 = req.files.image1;
+    let image2 = req.files.image2;
+    let image3 = req.files.image3;
+    let image4 = req.files.image4;
+
+    image1.mv("./public/product-images/" + id + ".jpg").then(() => {
+      image2.mv("./public/product-images/" + id + "-1.jpg").then(() => {
+        image3.mv("./public/product-images/" + id + "-2.jpg").then(() => {
+          image4.mv("./public/product-images/" + id + "-3.jpg").then(() => {
+            res.redirect("/admin");
+          });
+        });
+      });
+    });
+  });
+});
+
 router.post("/edit-product/:id", (req, res) => {
   let productID = req.params.id;
   if (req.files) {
