@@ -162,6 +162,12 @@ router.get("/orders", verifyAdmin, async (req, res) => {
   console.log(orders);
   res.render("admin/orders", { admin: true, orders });
 });
+router.get("/users", verifyAdmin, async (req, res) => {
+  let  users = await adminHelpers.getAllUrders();
+  users.reverse();
+  console.log(users);
+  res.render("admin/users", { admin: true, users });
+});
 
 router.get("/update-order/:id", (req, res) => {
   let orderId = req.params.id;
@@ -210,6 +216,11 @@ router.get("/add-coupon", (req, res) => {
 router.post("/add-coupon", (req, res) => {
   adminHelpers.addCoupon(req.body).then(() => {
     res.redirect("/admin");
+  });
+});
+router.get("/show-products", verifyAdmin, (req, res) => {
+  res.render("admin/show-products", {
+    admin: true,
   });
 });
 

@@ -75,6 +75,27 @@ router.post("/login", (req, res) => {
     }
   });
 });
+
+// router.post("/logout", (req, res) => {
+//  let token = req.body.token;
+//   console.log(token);
+//   async function verify() {
+//   const ticket = await client.verifyIdToken({
+//     idToken: token,
+//     audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+//     // Or, if multiple clients access the backend:
+//     //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+// });
+// const payload = ticket.getPayload();
+// const userid = payload['sub'];
+// console.log(payload);
+// }
+// verify().then(()=>{
+
+// }).catch(console.error);
+
+// });
+
 router.get("/logout", (req, res) => {
   req.session.user = null;
   req.session.userLoggedIn = false;

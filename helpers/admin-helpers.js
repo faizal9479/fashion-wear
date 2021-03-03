@@ -15,6 +15,7 @@ module.exports = {
       resolve(orders);
     });
   },
+  
   getOrderDetails: (orderId) => {
     return new Promise(async (resolve, reject) => {
       let orderDetails = await db
@@ -39,6 +40,17 @@ module.exports = {
         .then(() => {
           resolve({ status: true });
         });
+    });
+  },
+  getAllUrders: () => {
+    return new Promise(async (resolve, reject) => {
+      let users = await db
+        .get()
+        .collection(collection.USER_COLLECTION)
+        .find()
+        .toArray();
+      console.log(users);
+      resolve(users);
     });
   },
   doLogin: (userData) => {

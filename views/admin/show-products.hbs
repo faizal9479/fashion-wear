@@ -19,10 +19,10 @@
         {{#each products}}
         <tr>
           <th scope="row">{{@key}}</th>
-          <td>{{name}}</td>
-          <td>{{Category}}</td>
-          <td>{{Discription}}</td>
-          <td>{{Price}}</td>
+          <td>{{this.name}}</td>
+          <td>{{this.Category}}</td>
+          <td>{{this.Discription}}</td>
+          <td>{{this.Price}}</td>
           <td><img style="width: 70px;" src="/images/product-images/{{this._id}}.jpg" alt=""></td>
 
           <td>
@@ -40,8 +40,8 @@
     </table>
   </div>
 </section>
-<script>
+{{!-- <script>
   $(document).ready(function () {
     $('#product-table').DataTable();
   });
-</script>
+</script> --}}
