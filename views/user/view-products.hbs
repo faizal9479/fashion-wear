@@ -7,7 +7,7 @@
     <div class="carousel-inner">
         {{#each slideImages}}
         <div class="carousel-item active">
-            <img  src="/slide-images/{{this._id}}.jpg"  class="d-block " alt="">
+            <img src="/slide-images/{{this._id}}.jpg" class="d-block " alt="">
         </div>
         <div class="carousel-item">
             <img src="/slide-images/{{this._id}}-1.jpg" class="d-block w-100" alt="">
@@ -38,8 +38,8 @@
             {{#each products}}
             <div class="col-md-3 p-3">
                 <div class="card " style="width: 15rem; height:23rem; text-align: center;">
-                    <a href="/product/{{this._id}}"><img src='/images/product-images/{{this._id}}.jpg'  class="card-img-top"
-                            alt="{{name}}" style="height: 14rem; width: auto;"></a>
+                    <a href="/product/{{this._id}}"><img src='/images/product-images/{{this._id}}.jpg'
+                            class="card-img-top" alt="{{name}}" style="height: 14rem; width: auto;"></a>
                     <div class="card-body">
                         <h5 class="card-title">{{name}}</h5>
                         <p class="text-center card-text">Rs {{Price}}</p>

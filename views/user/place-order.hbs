@@ -1,8 +1,8 @@
 <!--================Checkout Area =================-->
 <section class="checkout_area padding_top">
     <div class="container">
-        
-     <div class="billing_details">
+
+        <div class="billing_details">
             <div class="row">
                 <div class="col-lg-8">
                     <h3>Shipping Details</h3>
@@ -217,7 +217,7 @@
 
 
 
-    if ({{{coupon.status}}}) {
+    if ({{ { coupon.status } }}) {
         let statusDiv = document.getElementById('couponStatus')
         statusDiv.style.display = 'block'
         console.log('coupon available')
@@ -235,16 +235,16 @@
         total(parseInt(oldSubtotal - offerPrice))
     }
 
-    function strikePrice(id){
-          let oldSubtotal = document.getElementById(id).textContent
-          document.getElementById(id).textContent = ''
-          var strikeElement = document.createElement("s");
-          var node = document.createTextNode(oldSubtotal);
-          strikeElement.appendChild(node)
-          var spanElement = document.getElementById(id);
-          spanElement.appendChild(strikeElement)
-          return oldSubtotal
-        }
+    function strikePrice(id) {
+        let oldSubtotal = document.getElementById(id).textContent
+        document.getElementById(id).textContent = ''
+        var strikeElement = document.createElement("s");
+        var node = document.createTextNode(oldSubtotal);
+        strikeElement.appendChild(node)
+        var spanElement = document.getElementById(id);
+        spanElement.appendChild(strikeElement)
+        return oldSubtotal
+    }
 
 
 
@@ -253,42 +253,3 @@
 
 </script>
 
-{{!-- <section>
-    <div class="container mt-5">
-        <form id="checkout-form">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Enter Shipping details</h2><br>
-                    <div>
-                        <label for="">Address</label>
-
-                        <input type="text" name="address" id="address" class="form-control">
-                        <label for="">Pincode</label>
-                        <input type="text" name="pincode" id="pincode" class="form-control">
-                        <label for="">Mobile number</label>
-                        <input type="text" name="mobile" id="mobile" class="form-control">
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="container mt-5 ml-5 checkout">
-                        <h5>Total amount: Rs.{{total}}</h5>
-                        <hr>
-                        <div class="payment">
-                            <p>Payment Method</p>
-                            <label class="radio-inline">
-                                <input type="radio" name="payment-method" value="COD" checked>COD
-                            </label>
-                            <label class="radio-inline mt-2">
-                                <input type="radio" name="payment-method" value="ONLINE">Online payment
-                            </label>
-                            <input type="text" name="userId" value="{{user._id}}" hidden>
-                            <button class="btn btn-primary float-right" type="submit">Checkout</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </form>
-
-    </div>
-</section> --}}

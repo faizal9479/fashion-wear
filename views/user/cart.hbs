@@ -14,7 +14,8 @@
                 {{#each products}}
                 <tr id="product-{{this.product._id}}">
 
-                    <td><img style="width: 70px; height: 70px;" src="/images/product-images/{{this.product._id}}.jpg" alt="">
+                    <td><img style="width: 70px; height: 70px;" src="/images/product-images/{{this.product._id}}.jpg"
+                            alt="">
                     </td>
                     <td>{{this.product.name}}</td>
                     <td>{{this.product.Price}}</td>
@@ -60,27 +61,25 @@
             success: (response) => {
                 console.log(response)
                 if (response.removeProduct) {
-                    //alert('item removed')
-                    //document.getElementById(`product-${productId}`).remove();
 
                     let remv = confirm('Do you need to remove')
                     if (remv) {
                         $.ajax({
-                        url: '/remove-item',
-                        data: {
-                            cart: cartId,
-                            product: productId
-                        },
-                        method: 'post',
-                        success: (response) => {
-                            location.reload()
-                        }
+                            url: '/remove-item',
+                            data: {
+                                cart: cartId,
+                                product: productId
+                            },
+                            method: 'post',
+                            success: (response) => {
+                                location.reload()
+                            }
 
-                        
-                    })
+
+                        })
                     }
-                    
-                    
+
+
                 } else {
                     document.getElementById(productId).innerHTML = quantity + count
                     document.getElementById('total').innerHTML = response.total
@@ -92,20 +91,20 @@
 
 
     function removeItem(cartId, productId) {
-        var delprd = confirm ('Do you need to remove')
-         if (delprd) {
-        $.ajax({
-            url: '/remove-item',
-            data: {
-                cart: cartId,
-                product: productId
-            },
-            method: 'post',
-            success: (response) => {
-                location.reload()
-            }
-        })
-    }
+        var delprd = confirm('Do you need to remove')
+        if (delprd) {
+            $.ajax({
+                url: '/remove-item',
+                data: {
+                    cart: cartId,
+                    product: productId
+                },
+                method: 'post',
+                success: (response) => {
+                    location.reload()
+                }
+            })
+        }
     }
 
 </script>

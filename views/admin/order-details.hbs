@@ -16,9 +16,12 @@
                         Update Status
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button onclick="updateStatus('placed','{{orderDetails._id}}')" class="dropdown-item bg-secondary" >Placed</button>
-                        <button onclick="updateStatus('shipped','{{orderDetails._id}}')" class="dropdown-item bg-success" >Shipped</button>
-                        <button onclick="updateStatus('delivered','{{orderDetails._id}}')" class="dropdown-item bg-info" >Delivered</button>
+                        <button onclick="updateStatus('placed','{{orderDetails._id}}')"
+                            class="dropdown-item bg-secondary">Placed</button>
+                        <button onclick="updateStatus('shipped','{{orderDetails._id}}')"
+                            class="dropdown-item bg-success">Shipped</button>
+                        <button onclick="updateStatus('delivered','{{orderDetails._id}}')"
+                            class="dropdown-item bg-info">Delivered</button>
                     </div>
                 </div>
             </div>
@@ -27,18 +30,18 @@
     </div>
 </section>
 <script>
-    function updateStatus(newStatus, orderId){
+    function updateStatus(newStatus, orderId) {
         $.ajax({
-            url:`/admin/updateOrderStatus/`,
-            method:'post',
-            data:{
-                orderId:orderId,
-                newStatus:newStatus
+            url: `/admin/updateOrderStatus/`,
+            method: 'post',
+            data: {
+                orderId: orderId,
+                newStatus: newStatus
             },
-            success:(response)=>{
-                if(response.status){
+            success: (response) => {
+                if (response.status) {
                     $('#status').html(newStatus)
-                    
+
 
                 }
             }

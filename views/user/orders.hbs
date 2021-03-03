@@ -12,11 +12,11 @@
                     <th scope="col">Status</th>
                 </tr>
             </thead>
-            <tbody>                
+            <tbody>
                 {{#each orders}}
                 <tr>
-                    
-                    
+
+
                     <td>{{this.date}}</td>
                     <td>{{this.deliveryDetails.address}}</td>
                     <td>{{this.deliveryDetails.pincode}}</td>
@@ -27,7 +27,7 @@
                         <a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a>
                     </td>
                 </tr>
-                {{/each}}                
+                {{/each}}
             </tbody>
         </table>
 

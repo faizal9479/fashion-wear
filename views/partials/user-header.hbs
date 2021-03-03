@@ -19,7 +19,8 @@
 
                 {{#if user}}
                 <li class="nav-item">
-                    <a class="nav-link" href="/cart">cart<span id="cart-count" class="badge badge-success">{{cartCount}}</span></a>
+                    <a class="nav-link" href="/cart">cart<span id="cart-count"
+                            class="badge badge-success">{{cartCount}}</span></a>
                 </li>
                 {{/if}}
 
@@ -31,19 +32,19 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{#if user}}
-                        {{user.Name}}
+                    {{user.Name}}
                     {{else}}
-                        Account
+                    Account
                     {{/if}}
-                    
+
                 </button>
                 <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
                     {{#if user}}
-                        <a class="dropdown-item" href="/logout">Logout</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
                     {{else}}
-                        <a class="dropdown-item" href="/login">Login</a>
+                    <a class="dropdown-item" href="/login">Login</a>
                     {{/if}}
-                    
+
                 </div>
             </div>
         </div>

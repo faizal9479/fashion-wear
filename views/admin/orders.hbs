@@ -1,6 +1,5 @@
 <section>
     <div class="container">
-
         <table class="table mt-5">
             <thead>
                 <tr>
@@ -12,11 +11,9 @@
                     <th scope="col">Status</th>
                 </tr>
             </thead>
-            <tbody>                
+            <tbody>
                 {{#each orders}}
                 <tr>
-                    
-                    
                     <td>{{this.date}}</td>
                     <td>{{this.deliveryDetails.addressLine1}}</td>
                     <td>{{this.deliveryDetails.pincode}}</td>
@@ -27,9 +24,8 @@
                         <a href="/admin/update-order/{{this._id}}" class="btn btn-primary">Update order</a>
                     </td>
                 </tr>
-                {{/each}}                
+                {{/each}}
             </tbody>
         </table>
-
     </div>
 </section>
