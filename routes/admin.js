@@ -210,12 +210,12 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/add-coupon", (req, res) => {
-  res.render("admin/add-coupon");
+  res.render("admin/add-coupon",{admin:true});
 });
 
 router.post("/add-coupon", (req, res) => {
   adminHelpers.addCoupon(req.body).then(() => {
-    res.redirect("/admin");
+    res.redirect("/admin" ,{admin:true});
   });
 });
 router.get('/show-products', (req,res,next)=>{
