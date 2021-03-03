@@ -15,13 +15,14 @@ const verifyAdmin = (req, res, next) => {
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
-  if (req.session.adminLoggedIn) {
-    productHelpers.getAllProducts().then((products) => {
-      res.render("admin/show-products", { admin: true, products });
-    });
-  } else {
-    res.redirect("/admin/login");
-  }
+  // if (req.session.adminLoggedIn) {
+  productHelpers.getAllProducts().then((products) => {
+    // res.render("admin/show-products", { admin: true, products });
+    res.render("admin/home", { admin: true, products });
+  });
+  // } else {
+  //   res.redirect("/admin/login");
+  // }
 });
 
 router.get("/add-slideshow", verifyAdmin, (req, res) => {
@@ -92,11 +93,15 @@ router.post("/add-product", (req, res) => {
 
     image1.mv("./public/images/product-images/" + id + ".jpg").then(() => {
       image2.mv("./public/images/product-images/" + id + "-1.jpg").then(() => {
-        image3.mv("./public/images/product-images/" + id + "-2.jpg").then(() => {
-          image4.mv("./public/images/product-images/" + id + "-3.jpg").then(() => {
-            res.redirect("/admin");
+        image3
+          .mv("./public/images/product-images/" + id + "-2.jpg")
+          .then(() => {
+            image4
+              .mv("./public/images/product-images/" + id + "-3.jpg")
+              .then(() => {
+                res.redirect("/admin");
+              });
           });
-        });
       });
     });
   });
