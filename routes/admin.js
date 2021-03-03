@@ -209,7 +209,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-router.get("/add-coupon", (req, res) => {
+router.get("/add-coupon",verifyAdmin,  (req, res) => {
   res.render("admin/add-coupon",{admin:true});
 });
 
@@ -218,12 +218,12 @@ router.post("/add-coupon", (req, res) => {
     res.redirect("/admin" ,{admin:true});
   });
 });
-router.get('/show-products', (req,res,next)=>{
+router.get('/show-products',verifyAdmin,  (req,res,next)=>{
   productHelpers.getAllProducts().then((products)=>{
     res.render("admin/show-products",{admin:true , products})
   })
 });
-router.get('/stock-deatails', (req,res)=>{
+router.get('/stock-deatails',verifyAdmin, (req,res)=>{
   res.render("admin/stock-deatails",{admin:true})
 })
 module.exports = router;
