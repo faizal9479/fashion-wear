@@ -218,10 +218,9 @@ router.post("/add-coupon", (req, res) => {
     res.redirect("/admin");
   });
 });
-router.get("/show-products", verifyAdmin, (req, res) => {
-  res.render("admin/show-products", {
-    admin: true,
-  });
-});
-
+router.get('/show-products', (req,res,next)=>{
+  productHelpers.getAllProducts().then((products)=>{
+    res.render("admin/show-products",{admin:true , products})
+  })
+})
 module.exports = router;
