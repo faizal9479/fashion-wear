@@ -15,9 +15,7 @@ db.connect((err) => {
 var userRouter = require("./routes/user");
 var adminRouter = require("./routes/admin");
 const { url } = require("inspector");
-const {OAuth2Client} = require('google-auth-library');
-const CLIENT_ID = '230080780639-3bqkagdiqupdn70ps3pp7dtkmrku0fpq.apps.googleusercontent.com'
-const client = new OAuth2Client(CLIENT_ID);
+
 
 var app = express();
 
